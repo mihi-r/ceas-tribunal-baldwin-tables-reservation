@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserve tables in Baldwin Hall for events sponsored by your organization">
+    <title>Baldwin Tables Reservation</title>
+    <link rel="stylesheet" type="text/css" href="../build/main.min.css?v=616f11e3b07402abaecc14bd67d9ce03">
+</head>
+<body>
+    <div class="intro">
+            <header>
+                <a href="https://tribunal.uc.edu"><img src="../images/tribunal_logo.png" alt="Tribunal logo"></a>
+            </header>
+
+            <div class="container">
+                    <div class="title">
+                        <h1>Baldwin Tables Reservation</h1>
+                    </div>
+                    <div class="selection-intro">
+                        <p class="intro-info">Reserve tables in Baldwin Hall 600 for events sponsored by your organization or for other organizational needs.
+                            To proceed, choose from our selection of lobby tables and request for your desired event time.
+                            Only a single range of time on 1 day will be accepted. You can make multiple submissions for multiple days and times.
+                            Your request will not be confirmed until it is approved by us.
+                            Please allow 1-3 days to either approve or deny your request.
+                            Reserve at least one week in advance to allow for the most optimal outcome.
+                            If you have any questions, please email our Engineering Student Organization Council (ESOC) Chair Nathan Halbisen at <a>halbisnj@mail.uc.edu</a>.
+                        </p>
+                        <form class="table-selection">
+                            <h3>Select Table (Facing the stairs)</h3>
+                            <div class="radio-group">
+                                <div class="radio-button">
+                                    <input type="radio" id="radio-0" name="radio" value="left">
+                                    <label for="radio-0">Left Table</label>
+                                </div>
+                                <div class="radio-button">
+                                    <input type="radio" id="radio-1" name="radio" value="right">
+                                    <label for="radio-1">Right Table</label>
+                                </div>
+                                <div class="radio-button">
+                                    <input type="radio" id="radio-2" name="radio" value="leftright">
+                                    <label for="radio-2">Both Tables</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="reservation-result">
+                        <div class="success-response">
+                            <p class="success-emoji">🎉</p>
+                            <p>You have successfully submitted a reservation for your desired time.
+                                Your Reservation ID is <span class="res-id"></span>.
+                                An email has been sent to <span class="email"></span> to confirm this information. 
+                                Your request will not be confirmed until it is approved by us. 
+                                Please allow 1-3 days to either approve or deny your request. 
+                                You will receive an email once your approval has been decided.
+                            </p>
+                            <p><a href="index.html">Submit a another reservation</a> if you would like to reserve additional time.</p>
+                        </div>
+
+                        <div class="fail-response">
+                            <p>Your reservation submission failed with the following error: <span class="error-msg"></span></p>
+                            <p>You may try <span class="retry"><a>creating the request again.</a></span></p>
+                        </div>
+                    </div>
+            </div>
+    </div>
+
+    <div class="container" id="select-event-time">
+        <h2><i class="far fa-clock"></i> Select Event Time</h2>
+        <div class="table-times">
+            <div class="calendar">
+                <div class="head">
+                    <ul>
+                    <li class="prev"><i class="fas fa-chevron-circle-left"></i></li>
+                    <li class="next"><i class="fas fa-chevron-circle-right"></i></li>
+                    <li class="month">May<br><span>2019</span></li>
+                    </ul>
+                </div>
+            
+                <ul class="days-of-week">
+                </ul>
+
+                <ul class="dates">
+                </ul>
+
+                <div class="all-times">
+                    
+                </div>
+            </div>
+
+            <div class="calendar-info">
+                <h3>Selecting Times</h3>
+                <p>Each time block is at an interval of 15 minutes. To select a range of time, click on your desired start block and drag down to your desired end block.
+                    You can also click on each time block individually, however, you may only select contiguous time blocks.
+                    To request for multiple time ranges, you will need to make multiple request submissions.
+                    Clicking on a selected block will clear the selection on that block while clicking clear will remove the entire selection.
+                    Once you are ready, click continue. The next step will verify your time and you will be able to reselect your time range if you find that was not what you wanted.
+                </p>
+                <h3>Calendar Legend</h3>
+                <ul>
+                    <li>White blocks are available blocks that are able to be selected.</li>
+                    <li>Blue blocks are time blocks in your selection.</li>
+                    <li>Red blocks are reserved times requested by other organizations.</li>
+                </ul>
+            </div>
+
+            <div class="calendar-buttons">
+                <p class="scroll-hint">Scroll Calendar</p>
+                <p class="more-info"><i class="fas fa-info"></i></p>
+                <p class="clear">CLEAR</p>
+                <p class="continue">CONTINUE</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container" id="confirm-time">
+        <h2><i class="far fa-calendar-check"></i> Confirm Reservation</h2>
+        <form>
+            <p>You have selected to reserve between <span class="start-time"></span> and <span class="end-time"></span> on <span class="month"></span> <span class="date"></span>, <span class="year"></span>. You can also <a href="#select-event-time">change your selection</a>.</p>
+
+            <input type="text" id="event-title" name="event-title" placeholder="Event Title">
+
+            <input type="text" id="reserver-name" name="reserver-name" placeholder="Your Name" autocomplete="off">
+
+            <input type="text" id="organization-name" name="organization-name" placeholder="Organization Name" autocomplete="off">
+
+            <input type="email" id="email" name="email" placeholder="Email" autocomplete="off">
+
+            <input type="text" id="comments" name="comments" placeholder="Additional Notes (Optional)">
+
+            <input type="button" value="Reserve" id="reserve-button">
+            <div class="loader"><i class="fas fa-spinner fa-pulse"></i></div>
+        </form>
+    </div>
+
+    <footer>
+        <p>University of Cincinnati | © 2019 College of Engineering and Applied Science Tribunal </p>
+        <p>For any questions or comments, contact us at careerfair@uc.edu.</p>      
+    </footer>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js?v=c640b8958f7e3bec9e519fb73c60a3a5" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <script src="../build/scripts/main.bundle.js?v=c640b8958f7e3bec9e519fb73c60a3a5" type="text/javascript"></script>
+</body>
+</html>
