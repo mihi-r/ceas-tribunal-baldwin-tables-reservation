@@ -1,0 +1,640 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    padding: 0 20px;
+    max-width: 960px;
+    margin: 0 auto; 
+    min-height: 100vh;
+}
+
+.intro {
+
+    background: #cb2d3e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ef473a, #cb2d3e), url(../images/baldwin.jpg);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ef473a, #cb2d3e), url(../images/baldwin.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
+    padding-bottom: 20px;
+
+}
+
+header {
+    background: #ffffff;
+    width: 100%;
+    height: 90px;
+    z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    color: white;
+}
+
+.title {
+    max-width: 960px;
+    margin: 40px auto;
+}
+
+h1 {
+    margin-top: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+    color: white;
+    border-bottom: 6px solid #ffffff59;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #a7a7a7;
+    text-align: center;
+    padding-top: 20px;
+}
+
+header img {
+    float: left;
+    width: 180px;
+    margin: 14px;
+}
+
+p {
+    max-width: 960px;
+    margin: 20px auto;
+}
+
+p {
+    color: white;
+}
+
+p a {
+    text-decoration: none;
+    color: #0074D9;
+    transition: color 0.4s;
+}
+
+p a:hover { 
+    color: #7FDBFF; 
+    cursor: pointer;
+}
+
+p a:active {
+  color: #007BE6;
+}
+
+.intro .intro-info a {
+    color: rgb(253, 243, 214);
+}
+
+.intro .intro-info a:hover { 
+    color: rgb(221, 221, 221);
+    cursor: pointer;
+}
+
+.intro .intro-info a:active {
+    color: rgb(253, 243, 214);
+}
+  
+
+form {
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 960px;
+    margin: 40px auto;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    background: white;
+}
+
+form.table-selection {
+    max-width: 500px;
+}
+
+form label {
+    padding: 50px;
+    font-size: 15px;
+    color: #666;
+}
+
+form input[type=text],
+form input[type=number],
+form input[type=email],
+form input[type=time],
+form input[type=file],
+form textarea {
+    width: 90%;
+    padding: 12px 0px;
+    margin: 8px auto;
+    display: block;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ccc;
+    box-sizing: border-box;
+    transition: border-bottom 0.1s;
+    font-size: 15px;
+}
+
+form input[type=text].missing,
+form input[type=number].missing,
+form input[type=email].missing,
+form input[type=time].missing,
+form input[type=file].missing,
+form textarea.missing {
+    border-bottom: 2px solid #e00122;
+}
+
+form h3 {
+    width: 90%;
+    padding: 12px 0px 0px 0px;
+    margin: 16px auto 0 auto;
+    display: block;
+    font-size: 15px;
+}
+
+form p {
+    color: black;
+    padding: 10px 50px;
+}
+
+form input[type=text]:focus,
+form input[type=number]:focus,
+form input[type=email]:focus,
+form input[type=time]:focus,
+form input[type=file]:focus {
+    border-bottom: 2px solid #8f8f8f;
+}
+
+form input[type=text].missing:focus,
+form input[type=number].missing:focus,
+form input[type=email].missing:focus,
+form input[type=time].missing:focus,
+form input[type=file].missing:focus,
+form textarea.missing {
+    border-bottom: 2px solid #8f131f;
+}
+
+form input[type=button] {
+    background-color: #e00122;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: background-color 0.6s, color 0.6s;
+    margin: 20px auto 20px auto;
+    display: block;
+    width: 90%;
+    padding: 10px;
+    -webkit-appearance: none;
+    outline: 0;
+    border: none;
+    border: 2px solid #e00122;
+    border-radius: 4px;
+    color: white;
+}
+
+form input[type=button]:hover {
+    background-color: white;
+    color: #e00122;
+    border: 2px solid #e00122;
+    cursor: pointer;
+}
+
+/* Radio buttons */
+
+.radio-button {
+    margin: 10px 0;
+    position: relative;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+
+.radio-button:hover {
+    border: 2px solid #3C454C;
+}
+
+.radio-button label {
+    padding: 12px 30px;
+    display: block;
+    text-align: left;
+    color: #3C454C;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.radio-button label:after {
+    width: 32px;
+    height: 32px;
+    content: '';
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.radio-button input:checked ~ label:after {
+    background-color: #e00122;
+}
+
+.radio-button input {
+    width: 32px;
+    height: 32px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.radio-group {
+    padding: 0 16px;
+    margin: 20px auto;
+    line-height: 30px;
+}
+
+/* Select Event Time Section */
+#select-event-time {
+    margin-bottom: 40px;
+    display: none;
+}
+
+/* Calendar */
+.calendar {
+    overflow: scroll;
+    max-height: 75vh;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid #e00122;
+}
+
+.calendar ul {
+    list-style-type: none;
+}
+.calendar .head {
+    padding: 30px 10px;
+    background: #e00122;
+    text-align: center;
+    z-index: 2;
+}
+
+.calendar .head ul {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar .head ul li {
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.calendar .head ul li span {
+    font-size: 20px;
+}
+
+.calendar .head .prev {
+    float: left;
+    margin: 10px 0 0 10px;
+    color: white;
+    visibility: hidden;
+}
+
+.calendar .head .next {
+    float: right;
+    margin: 10px 10px 0 0;
+    color: white;
+}
+
+.calendar .head .prev svg,
+.calendar .head .next svg {
+    filter: drop-shadow(0px 2px 2px #5757573a);
+    transition: color 0.2s;
+}
+
+.calendar .head .prev svg:hover,
+.calendar .head .next svg:hover {
+    /*filter: drop-shadow(0px 4px 4px #57575770);*/
+    color: #ffffffc5;
+    cursor: pointer;
+}
+
+.calendar .days-of-week {
+    margin: 0;
+    padding: 10px 0;
+    z-index: 1;
+
+}
+
+.calendar .days-of-week li {
+    font-weight: 600;
+    color: #313131;
+    width: 14.28%;
+    text-align: center;
+    float: left;
+    display: block;
+    background: #eeeeee;
+    height: 40px;
+    line-height: 40px;
+}
+
+.calendar .dates {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.calendar .dates li {
+    font-weight: 600;
+    color: #313131;
+    width: 14.28%;
+    text-align: center;
+    float: left;
+    display: block;
+    background: #eeeeee;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+}
+
+.calendar .times {
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.calendar .times li {
+    font-weight: 300;
+    width: 14.28%;
+    text-align: center;
+    float: left;
+    display: block;
+    line-height: 30px;
+    transition: background-color 0.3s;
+    border-right: 2px solid #eeeeee;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.calendar .times li:first-child {
+    border-left: 2px solid #eeeeee;
+}
+
+.calendar .times li:hover {
+    background-color: #d6f7ff;
+    cursor: pointer;
+}
+
+.calendar-buttons .scroll-hint {
+	position: absolute;
+	opacity: 1;
+    border: 2px solid#ffc300;
+    background-color: #fff9e3;
+    color: #d1a000;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+	font-size: 14px;
+	padding: 6px 26px;
+	border-radius: 50px;
+	left: 50%;
+	bottom: 100px;
+	transform: translateX(-50%);
+	transition: left 0.3s, opacity 0.3s;
+}
+
+.table-times .scroll-hint.done {
+    opacity: 0;
+    left: -80px;
+}
+
+.calendar .selected {
+    background: #80d8ff;
+}
+
+.calendar .reserved {
+    background: #ffcdd2;
+    color: #cb9ca1;
+}
+
+.calendar .tentative {
+    background: #ffee58;
+    color: #cabf45;
+}
+
+.calendar .times li.reserved:hover {
+    background: #ffcdd2;
+    cursor: initial;
+}
+
+.calendar .times li.tentative:hover {
+    background: #ffee58;
+    cursor: initial;
+}
+
+/* Calendar buttons */
+.calendar-buttons {
+    display: flex;
+    position: relative;
+}
+
+.calendar-buttons .more-info,
+.calendar-buttons .clear,
+.calendar-buttons .continue {
+    background: white;
+    border: 2px solid #3f3f3f;
+    color: #3f3f3f;
+    padding: 10px 6px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.2s, background 0.2s;
+    display: inline-block;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.calendar-buttons .more-info {
+    max-width: 30px;
+}
+
+.calendar-buttons .continue {
+    background: #3f3f3f;
+    border: 2px solid #3f3f3f;
+    color: white;
+    margin-right: 0;
+}
+
+.calendar-buttons .more-info:hover,
+.calendar-buttons .clear:hover,
+.calendar-buttons .continue:hover {
+    background: #e2e2e2;
+    color: #3f3f3f;
+    border: 2px solid #3f3f3f;
+    cursor: pointer;
+}
+
+/* Confirm Time */
+#confirm-time {
+    display: none;
+}
+
+/* Reservation Result */
+.reservation-result {
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 960px;
+    margin: 40px auto;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    background: white;
+    display: none;
+}
+
+.reservation-result p {
+    color: black;
+    padding: 10px 30px;
+}
+
+.reservation-result .fail-response {
+    display: none;
+}
+
+.reservation-result .success-response {
+    display: none;
+}
+
+.reservation-result .success-response .success-emoji {
+    font-size: 40px;
+    text-align: center;
+    padding: 0;
+}
+
+.reservation-result .success-response .res-id {
+    color: #e00122;
+}
+
+/* Warnings */
+.warning {
+    position: fixed;
+    z-index: 5;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 8px 0px;
+    font-size: 14px;
+    padding: 0px 16px;
+    max-width: 400px;
+    border-top: 6px solid #ffc300;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+  
+.warning.missing-fields {
+    left: 50%;
+    margin-top: 100px;
+}
+  
+.warning p {
+    padding: 6px 20px 20px;
+    margin: 0;
+    color: #3f3f3f;
+    width: auto;
+}
+  
+.warning .close {
+    font-size: 20px;
+    padding-top: 20px;
+    color: #3f3f3f;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+  
+.warning .close:hover {
+    color: #ff9e00;
+}
+
+/* Calendar Information */
+.calendar-info {
+	font-size: 14px;
+	border-bottom: 2px solid #e00122;
+	overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s;
+}
+
+.calendar-info h3 {
+    color: #3C454C;
+}
+
+.calendar-info p {
+    color: #3C454C;
+}
+
+.calendar-info ul {
+    color: #3C454C;
+}
+
+/* Loading symbol */
+.loader {
+    color: #3C454C;
+    text-align: center;
+    font-size: 30px;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background: #3f3f3f;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+footer p {
+    text-align: center;
+    margin: 0 20px;
+    padding-top: 16px;
+    font-size: 14px;
+    color: #cacaca;
+}
+
+footer p:nth-of-type(2) {
+    padding-top: 4px;
+    margin-top: 0;
+    padding-bottom: 16px;
+}
+
+@media screen and (max-width: 900px) {
+    .time-table-container .col {
+      width: 100%;
+      margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    form p {
+        padding: 10px 20px;
+    }
+}
