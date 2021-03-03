@@ -618,6 +618,7 @@ footer p {
     padding-top: 16px;
     font-size: 14px;
     color: #cacaca;
+    max-width:none;
 }
 
 footer p:nth-of-type(2) {
