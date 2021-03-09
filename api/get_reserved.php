@@ -11,9 +11,9 @@ $dateList ="";
 $monthList = "";
 $yearList = "";
 
-$dateList = mysqli_real_escape_string($mysqli, strip_tags(trim($_POST["dateListText"])));
-$monthList = mysqli_real_escape_string($mysqli, strip_tags(trim($_POST["monthListText"])));
-$yearList = mysqli_real_escape_string($mysqli, strip_tags(trim($_POST["yearListText"])));
+$dateList = mysqli_real_escape_string($mysqli, strip_tags(trim($_GET["dateListText"])));
+$monthList = mysqli_real_escape_string($mysqli, strip_tags(trim($_GET["monthListText"])));
+$yearList = mysqli_real_escape_string($mysqli, strip_tags(trim($_GET["yearListText"])));
 
 $dateListArray = explode(',', $dateList);
 $monthListArray = explode(',', $monthList);
