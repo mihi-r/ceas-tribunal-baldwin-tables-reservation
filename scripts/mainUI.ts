@@ -135,7 +135,7 @@ export const registerCalendarPrevButtonClick = function() {
             }
         }
     
-        if (traverseDate == CURRENT_DATE) {
+        if (traverseDate == CURRENT_DATE && traverseMonth == CURRENT_MONTH && traverseYear == CURRENT_YEAR) {
             prevButton.style.visibility = "hidden";
         }
     
