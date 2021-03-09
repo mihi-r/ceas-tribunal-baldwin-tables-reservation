@@ -135,7 +135,7 @@ export const registerCalendarPrevButtonClick = function() {
             }
         }
     
-        if (traverseDate == CURRENT_DATE) {
+        if (traverseDate == CURRENT_DATE && traverseMonth == CURRENT_MONTH && traverseYear == CURRENT_YEAR) {
             prevButton.style.visibility = "hidden";
         }
     
@@ -254,7 +254,6 @@ const generateCalendarTimes = function() {
 
     let timeIndex = 0;
     const minuteIncrement = [":00", ":15", ":30", ":45"];
-
     for (let i = START_TIME; i < END_TIME; i++) {
         // :00
         minuteIncrement.forEach(function(increment) {
@@ -554,7 +553,7 @@ const populateReservedTimes = function(date: string, startTime: string, endTime:
         return calendarDate.textContent == date;
     });
 
-    if (searchCol > -1) {
+    if (searchCol > 0) {
         let startTimeIndex = 0;
         const calendarTimeElements: NodeListOf<HTMLLIElement> = document.querySelectorAll(".calendar .all-times li");
         for (let i = searchCol; i < calendarTimeElements.length; i+=7) {
@@ -581,10 +580,8 @@ const populateReservedTimes = function(date: string, startTime: string, endTime:
 const isMultiRange = function(timeElements: HTMLLIElement[]) {
     const firstTimeElementNumber = getElementIdNumber(timeElements[0], TIME_PREFIX);
     let isViolation = false;
-
-    timeElements.shift();
     let elementCounter = firstTimeElementNumber;
-
+    elementCounter -= 7;
     timeElements.forEach(function(timeElement) {
         elementCounter+=7;
         if (getElementIdNumber(timeElement, TIME_PREFIX) !== elementCounter) {
