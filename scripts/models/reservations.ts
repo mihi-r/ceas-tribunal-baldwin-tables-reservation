@@ -10,14 +10,10 @@ export class Reservations {
      * @param yearList The comma separated list of years to fetch reservations for.
      */
     public async fetchData(dateList: string, monthList: string, yearList: string) {
-        const submissionFormData = new FormData();
-        submissionFormData.append('dateListText', dateList);
-        submissionFormData.append('monthListText', monthList);
-        submissionFormData.append('yearListText', yearList);
+        const apiRoute = `../api/get_reserved.php?dateListText=${dateList}&monthListText=${monthList}&yearListText=${yearList}`;
 
-        const response = await fetch('../api/get_reserved.php', {
-            method: 'POST',
-            body: submissionFormData
+        const response = await fetch(apiRoute, {
+            method: 'GET'
         });
 
         const data: ReservationApiResponse = await response.json();
