@@ -62,7 +62,7 @@ if(!preg_match('/^[\w\W]+@[\w\W\d]{1,256}$/', $email)) {
 }
 
 if (strlen($comments) > 500) {
-	$resultData->data = "The comments field exceeds 500 characters. Please choose a shorter email to proceed.";
+	$resultData->data = "The comments field exceeds 500 characters. Please enter a shorter comment.";
 	echo json_encode($resultData);
 	die();
 }
