@@ -37,27 +37,28 @@ if (!isset($resultData))
 $resultData->status = "fail";
 
 if (strlen($eventTitle) > 256) {
-	$resultData->data = "The event title field exceeds 128 characters. Please shorten your event title.";
+	$resultData->data = "The event title field exceeds 256 characters. Please shorten your event title.";
 	echo json_encode($resultData);
 	die();
 }
 
 if (strlen($name) > 256) {
-	$resultData->data = "The name field exceeds 128 characters. Please shorten your name.";
+	$resultData->data = "The name field exceeds 256 characters. Please shorten your name.";
 	echo json_encode($resultData);
 	die();
 }
 
 if (strlen($orgName) > 256) {
-	$resultData->data = "The organization name field exceeds 128 characters. Please shorten your organization's name.";
+	$resultData->data = "The organization name field exceeds 256 characters. Please shorten your organization's name.";
 	echo json_encode($resultData);
 	die();
 }
 
-if (strlen($email) > 256) {
-	$resultData->data = "The email field exceeds 128 characters. Please choose a shorter email to proceed.";
-	echo json_encode($resultData);
-	die();
+if(!preg_match('/^[\w\W]+@[\w\W\d]{1,256}$/', $email)) {
+    $resultData->data = 'Your email, ' . $email . ', is invalid. Please use an email in the following format: <>@<>. '
+        . 'Your email is also limited to 256 characters.';
+    echo json_encode($resultData);
+    die();
 }
 
 if (strlen($comments) > 500) {
