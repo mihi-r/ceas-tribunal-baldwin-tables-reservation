@@ -68,8 +68,6 @@ if (strlen($comments) > 500) {
 
 $isQuerySuccess = TRUE;
 $adminEmail = "";
-$randomPrefix = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 5);
-$reservationId = uniqid($randomPrefix);
 
 $sql = "SELECT admin_email FROM baldwin_tables_info WHERE id=1";
 $result = $mysqli->query($sql);
@@ -97,7 +95,7 @@ if (!$result) {
 				$isQuerySuccess = FALSE;
 			} else {
 				$resultData->status = "success";
-				$resultData->data = $reservationId;
+				$resultData->data = $mysqli->insert_id;
 				echo json_encode($resultData);
 			}
 
