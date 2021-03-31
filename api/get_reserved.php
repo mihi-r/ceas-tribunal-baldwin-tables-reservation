@@ -1,8 +1,6 @@
 <?php
 
 error_reporting(-1);
-//set_include_path('/web/sites/www.tribunal.uc.edu/htdocs/resume-review-day/students/includes/');
-//require_once("mysqli.php");
 
 set_include_path("./includes/");
 require_once("mysqli.php");
