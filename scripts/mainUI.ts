@@ -3,7 +3,7 @@ import { CURRENT_DATE, CURRENT_MONTH, CURRENT_WEEKDAY, CURRENT_YEAR, DAYS_OF_MON
 import { Reservations } from './models/reservations';
 import { ReservationSubmission } from './models/reservationSubmission';
 
-let chosenTable = "leftright";
+let curtableChosen = "leftright";
 let traverseMonth = CURRENT_MONTH;
 let traverseDate = CURRENT_DATE;
 let traverseWeekday = CURRENT_WEEKDAY;
@@ -57,8 +57,8 @@ export const registerTableSelection = function() {
 
     tableRadioButtons.forEach(function(radioButton) {
         radioButton.onclick = function() {
+            
             setSelectedTable();
-
             selectEventTimeContainer.style.display = "block";
     
             setTimeout(function() {
@@ -215,7 +215,7 @@ export const registerContinueCalendarButton = function() {
 const setSelectedTable = function() {
     let radioSelectedTable: HTMLInputElement = document.querySelector('.table-selection input[name="radio"]:checked');
     if (radioSelectedTable) {
-        chosenTable = radioSelectedTable.value;
+        curtableChosen = radioSelectedTable.value;
     }
 }
 
@@ -536,7 +536,16 @@ const queryReservedTime = async function(queryDateList: string, clickedButton: H
     clickedButton.appendChild(arrowSymbol);
 
     reservations.reservations.forEach((reservation) => {
-        populateReservedTimes(String(reservation.date), reservation.startTime, reservation.endTime);
+        if ((curtableChosen === "left") && (reservation.tableChosen === "leftright")){
+            populateReservedTimes(String(reservation.date), reservation.startTime, reservation.endTime,)
+        }
+        else if ((curtableChosen === "right") && (reservation.tableChosen === "leftright")){
+            populateReservedTimes(String(reservation.date), reservation.startTime, reservation.endTime,)
+        }
+        else if ((curtableChosen === reservation.tableChosen) || (curtableChosen === "leftright")){
+            populateReservedTimes(String(reservation.date), reservation.startTime, reservation.endTime,)
+        }
+        
     });
 }
 
@@ -730,7 +739,7 @@ const generateReservationForm = function(
                 selectedWeekDay,
                 selectedTimeStart,
                 selectedTimeEnd,
-                chosenTable,
+                curtableChosen,
                 formComments.value
             );
         }
