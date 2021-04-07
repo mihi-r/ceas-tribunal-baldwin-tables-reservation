@@ -2,7 +2,6 @@ import { displayWarning, getElementIdNumber, validateInputFieldData } from './co
 import { CURRENT_DATE, CURRENT_MONTH, CURRENT_WEEKDAY, CURRENT_YEAR, DAYS_OF_MONTH, DAYS_OF_WEEK, END_TIME, MONTHS, START_TIME, TIME_PREFIX } from './constants/generalConstants';
 import { Reservations } from './models/reservations';
 import { ReservationSubmission } from './models/reservationSubmission';
-import { ApiStatus } from './types/types';
 
 let chosenTable = "leftright";
 let traverseMonth = CURRENT_MONTH;
@@ -135,7 +134,7 @@ export const registerCalendarPrevButtonClick = function() {
             }
         }
     
-        if (traverseDate == CURRENT_DATE) {
+        if (traverseDate == CURRENT_DATE && traverseMonth == CURRENT_MONTH && traverseYear == CURRENT_YEAR) {
             prevButton.style.visibility = "hidden";
         }
     
@@ -254,7 +253,6 @@ const generateCalendarTimes = function() {
 
     let timeIndex = 0;
     const minuteIncrement = [":00", ":15", ":30", ":45"];
-
     for (let i = START_TIME; i < END_TIME; i++) {
         // :00
         minuteIncrement.forEach(function(increment) {
@@ -554,7 +552,7 @@ const populateReservedTimes = function(date: string, startTime: string, endTime:
         return calendarDate.textContent == date;
     });
 
-    if (searchCol > -1) {
+    if (searchCol > 0) {
         let startTimeIndex = 0;
         const calendarTimeElements: NodeListOf<HTMLLIElement> = document.querySelectorAll(".calendar .all-times li");
         for (let i = searchCol; i < calendarTimeElements.length; i+=7) {
@@ -581,10 +579,8 @@ const populateReservedTimes = function(date: string, startTime: string, endTime:
 const isMultiRange = function(timeElements: HTMLLIElement[]) {
     const firstTimeElementNumber = getElementIdNumber(timeElements[0], TIME_PREFIX);
     let isViolation = false;
-
-    timeElements.shift();
     let elementCounter = firstTimeElementNumber;
-
+    elementCounter -= 7;
     timeElements.forEach(function(timeElement) {
         elementCounter+=7;
         if (getElementIdNumber(timeElement, TIME_PREFIX) !== elementCounter) {
@@ -783,51 +779,6 @@ const submitReservation = async function(
     // Display loading symbol
     reserveButton.style.display = "none";
     loader.style.display = "block";
-    
-    // const submissionData = {
-    //     eventTitleText: eventTitle,
-    //     nameText: name,
-    //     orgNameText: orgName,
-    //     emailText: email,
-    //     monthText: month,
-    //     dateText: date,
-    //     yearText: year,
-    //     weekdayText: weekDay,
-    //     startTimeText: startTime,
-    //     endTimeText: endTime,
-    //     tableChosenText: tableChosen,
-    //     commentsText: comments
-    // }
-
-    // const submissionFormData = new FormData();
-
-    // for(let i in submissionData) {
-    //     submissionFormData.append(i, submissionData[i]);
-    // }
-
-    // fetch("../api/reserve.php", {
-    //     method: "POST",
-    //     body: submissionFormData,
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         return response.json();
-    //     } else {
-    //         displayReservationResult("Fail", "Something may be wrong with the network. Please check your connection.");
-    //     }
-    // })
-    // .then(data => {
-    //     reserveButton.style.display = "block";
-    //     loader.style.display = "none";
-    //     confirmTimeContainer.style.display = "none";
-    //     selectEventTimeContainer.style.display = "none";
-    //     selectionIntroContainer.style.display = "none";
-
-    //     displayReservationResult(data.status, data.data, email);
-    // })
-    // .catch((error) => {
-    //     displayReservationResult("Fail", "Something may be wrong with the network. Please check your connection.");
-    // });
 
     const reservationSubmission = new ReservationSubmission(
         eventTitle,
@@ -869,32 +820,6 @@ const submitReservation = async function(
 
     bodyElement.scrollIntoView({behavior: "smooth", block: "start"});
 }
-
-// const displayReservationResult = function(status, data, email=null) {
-//     const bodyElement: HTMLBodyElement = document.querySelector("body");
-//     const reservationResultContainer: HTMLDivElement = document.querySelector(".reservation-result");
-//     const successResponse: HTMLDivElement = document.querySelector(".reservation-result .success-response");
-//     const failResponse: HTMLDivElement = document.querySelector(".reservation-result .fail-response");
-
-//     reservationResultContainer.style.display = "block";
-
-//     if (status === ApiStatus.Success) {
-//         successResponse.style.display = "block";
-//         successResponse.querySelector(".res-id").textContent = data;
-//         successResponse.querySelector(".email").textContent = email;
-//     } else {
-//         failResponse.style.display = "block";
-//         failResponse.querySelector(".error-msg").textContent = data;
-//         const retryLink: HTMLSpanElement = failResponse.querySelector(".retry");
-//         retryLink.onclick = function() {
-//             failResponse.style.display = "none";
-//             reservationResultContainer.style.display = "none";
-//             restoreSelectionInterface();
-//         }
-//     }
-
-//     bodyElement.scrollIntoView({behavior: "smooth", block: "start"});
-// }
 
 /**
  * Restore the event selection.

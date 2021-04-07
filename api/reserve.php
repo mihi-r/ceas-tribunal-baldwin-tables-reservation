@@ -1,8 +1,6 @@
 <?php
 
 error_reporting(-1);
-//set_include_path('/web/sites/www.tribunal.uc.edu/htdocs/resume-review-day/students/includes/');
-//require_once("mysqli.php");
 
 set_include_path("./includes/");
 require_once("mysqli.php");
@@ -39,39 +37,38 @@ if (!isset($resultData))
 $resultData->status = "fail";
 
 if (strlen($eventTitle) > 256) {
-	$resultData->data = "The event title field exceeds 128 characters. Please shorten your event title.";
+	$resultData->data = "The event title field exceeds 256 characters. Please shorten your event title.";
 	echo json_encode($resultData);
 	die();
 }
 
 if (strlen($name) > 256) {
-	$resultData->data = "The name field exceeds 128 characters. Please shorten your name.";
+	$resultData->data = "The name field exceeds 256 characters. Please shorten your name.";
 	echo json_encode($resultData);
 	die();
 }
 
 if (strlen($orgName) > 256) {
-	$resultData->data = "The organization name field exceeds 128 characters. Please shorten your organization's name.";
+	$resultData->data = "The organization name field exceeds 256 characters. Please shorten your organization's name.";
 	echo json_encode($resultData);
 	die();
 }
 
-if (strlen($email) > 256) {
-	$resultData->data = "The email field exceeds 128 characters. Please choose a shorter email to proceed.";
-	echo json_encode($resultData);
-	die();
+if(!preg_match('/^[\w\W]+@[\w\W\d]{1,256}$/', $email)) {
+    $resultData->data = 'Your email, ' . $email . ', is invalid. Please use an email in the following format: <>@<>. '
+        . 'Your email is also limited to 256 characters.';
+    echo json_encode($resultData);
+    die();
 }
 
 if (strlen($comments) > 500) {
-	$resultData->data = "The comments field exceeds 500 characters. Please choose a shorter email to proceed.";
+	$resultData->data = "The comments field exceeds 500 characters. Please enter a shorter comment.";
 	echo json_encode($resultData);
 	die();
 }
 
 $isQuerySuccess = TRUE;
 $adminEmail = "";
-$randomPrefix = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 5);
-$reservationId = uniqid($randomPrefix);
 
 $sql = "SELECT admin_email FROM baldwin_tables_info WHERE id=1";
 $result = $mysqli->query($sql);
@@ -99,7 +96,7 @@ if (!$result) {
 				$isQuerySuccess = FALSE;
 			} else {
 				$resultData->status = "success";
-				$resultData->data = $reservationId;
+				$resultData->data = $mysqli->insert_id;
 				echo json_encode($resultData);
 			}
 
