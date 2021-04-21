@@ -1,3 +1,4 @@
+import { validateInputFieldData } from './common/uiElements';
 import { 
     registerCalendarNextButtonClick,
     registerCalendarPrevButtonClick,
@@ -6,9 +7,10 @@ import {
     registerContinueCalendarButton,
     registerMoreInfoButton,
     registerScrollHint,
-    registerTableSelection
+    registerTableSelection,
+    GetEsocName
 } from './mainUI';
-
+GetEsocName();
 registerMoreInfoButton();
 registerTableSelection();
 registerScrollHint();

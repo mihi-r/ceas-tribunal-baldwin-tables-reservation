@@ -2,6 +2,7 @@ import { displayWarning, getElementIdNumber, validateInputFieldData } from './co
 import { CURRENT_DATE, CURRENT_MONTH, CURRENT_WEEKDAY, CURRENT_YEAR, DAYS_OF_MONTH, DAYS_OF_WEEK, END_TIME, MONTHS, START_TIME, TIME_PREFIX } from './constants/generalConstants';
 import { Reservations } from './models/reservations';
 import { ReservationSubmission } from './models/reservationSubmission';
+import {GetInfo} from './models/getinfo';
 
 let curtableChosen = "leftright";
 let traverseMonth = CURRENT_MONTH;
@@ -12,6 +13,16 @@ let isMonthChanged = false;
 let isYearChanged = false;
 let isNewMonthInWindow = false;
 let isSelecting = false;
+
+
+export const GetEsocName = async function() {
+    const getInfo = new GetInfo();
+    await getInfo.initData();
+    let esocname = document.getElementById("esocname") as HTMLSpanElement;
+    let esocemail = document.getElementById("esocemail") as HTMLSpanElement;
+    esocname.textContent = getInfo.name;
+    esocemail.textContent = getInfo.email;
+}
 
 /**
  * Register more info button to expand details about the calendar.

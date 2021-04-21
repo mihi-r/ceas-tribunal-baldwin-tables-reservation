@@ -1,3 +1,8 @@
+export interface GetInfoApiResponseItem{
+    admin_name: string;
+    admin_email: string;
+}
+
 export interface ReservationResponseItem {
     start_time: string;
     end_time: string;
@@ -14,11 +19,15 @@ export interface Reservation {
 
 export interface ApiResponse {
     data: any;
-    status: string;
+    status: ApiStatus;
 }
 
 export interface ReservationApiResponse extends ApiResponse {
     data: Array<ReservationResponseItem>;
+}
+
+export interface GetInfoApiResponse extends ApiResponse {
+    data: GetInfoApiResponseItem;
 }
 
 export interface ReservationSubmissionApiResponse extends ApiResponse {
