@@ -18,7 +18,7 @@ if (!isset($result_data))
 
 $result_data->status = "fail";
 
-if($result){
+if ($result) {
     $result_data->data = $result->fetch_assoc();
     $result_data->status = "success";
 }

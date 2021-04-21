@@ -10,14 +10,14 @@ export class GetInfo {
         
         const data: GetInfoApiResponse = await response.json();
 
-        if(data.status == ApiStatus.Success){
+        if (data.status == ApiStatus.Success) {
             const info = data.data;
             if (info !== undefined){
                 this.name = info.admin_name;
                 this.email = info.admin_email;
             }
         }
-        else{
+        else {
             throw new Error('Could not fetch info')
         }
         

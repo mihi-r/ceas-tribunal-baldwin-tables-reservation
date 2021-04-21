@@ -14,14 +14,13 @@ let isYearChanged = false;
 let isNewMonthInWindow = false;
 let isSelecting = false;
 
-
 export const GetEsocName = async function() {
     const getInfo = new GetInfo();
     await getInfo.initData();
-    let esocname = document.getElementById("esocname") as HTMLSpanElement;
-    let esocemail = document.getElementById("esocemail") as HTMLSpanElement;
-    esocname.textContent = getInfo.name;
-    esocemail.textContent = getInfo.email;
+    let esocName = document.getElementById("esocname") as HTMLSpanElement;
+    let esocEmail = document.getElementById("esocemail") as HTMLSpanElement;
+    esocName.textContent = getInfo.name;
+    esocEmail.textContent = getInfo.email;
 }
 
 /**
