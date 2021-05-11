@@ -97,7 +97,7 @@ if (!$result) {
 			} else {
 				$resultData->status = "success";
 				$resultData->data = $mysqli->insert_id;
-				echo json_encode($resultData);
+				$reservationId = $mysqli->insert_id;
 			}
 
 	}
@@ -123,7 +123,7 @@ $emailMsg .= "Your request will not be confirmed until it is approved by us. Ple
 $emailMsg .= "The Reservation ID for this request: " . $reservationId . "\n \n";
 $emailMsg .= "Your Reservation ID will be helpful for us to identify your request. ";
 $emailMsg .= "In addition to tracking your status, you will receive an email once your approval has been decided. ";
-$emailMsg .= "If you have any questions or like to make changes to your reservation, feel free to reply back to this email or email us anytime with the Reservation ID. ";
+$emailMsg .= "If you have any questions or like to make changes to your reservation, feel free to reply back to this email or email us anytime with the Reservation ID. \n \n";
 $emailMsg .= "Best regards, \n";
 $emailMsg .= "CEAS Tribunal";
 
@@ -131,6 +131,7 @@ $emailHeaders = "From: " . $adminEmail;
 
 mail($email, $emailSubject, $emailMsg, $emailHeaders);
 
+echo json_encode($resultData);
 mysqli_close($mysqli);
 exit();
 ?>
